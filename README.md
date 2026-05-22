@@ -1,4 +1,4 @@
-# Frank Responsive Checker
+# Frank Website Responsive Checker
 
 [![WordPress Plugin](https://img.shields.io/badge/WordPress-Plugin-blue.svg)](https://wordpress.org/plugins/frank-responsive-checker/)
 [![License: GPL v2+](https://img.shields.io/badge/License-GPL%20v2%2B-lightgrey.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
