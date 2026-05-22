@@ -7,12 +7,6 @@
 
 **Frank Responsive Checker** is a professional, developer-first responsive testing and design audit suite built for WordPress. It enables you to instantly preview, test, and debug your website across 50+ virtual viewports, perform accessibility audits, simulate network conditions, and collaborate with clients via secure, shareable preview links—all directly from your WordPress admin dashboard or public front-end.
 
----
-
-![Frank Responsive Checker Banner](plugin-banner.png)
-
----
-
 ## 🚀 Key Features
 
 ### 📱 50+ Virtual Devices & Viewports
