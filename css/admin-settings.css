@@ -1,0 +1,952 @@
+/**
+ * Frank Responsive Checker - Admin Settings Styles
+ * Modern dark theme with premium aesthetics
+ */
+
+/* ==========================================================================
+   CSS Variables / Design Tokens
+   ========================================================================== */
+:root {
+    /* Primary Colors */
+    --vm-primary: #8b5cf6;
+    --vm-primary-hover: #a78bfa;
+    --vm-primary-dark: #7c3aed;
+    --vm-accent: #06b6d4;
+    --vm-accent-hover: #22d3ee;
+
+    /* Background Colors */
+    --vm-bg-dark: #0f0f1a;
+    --vm-bg-card: #1a1a2e;
+    --vm-bg-card-hover: #1e1e35;
+    --vm-bg-input: #12121f;
+    --vm-bg-gradient: linear-gradient(135deg, #1a1c2e 0%, #2d1b3d 50%, #1a1c2e 100%);
+
+    /* Text Colors */
+    --vm-text-primary: #f8fafc;
+    --vm-text-secondary: #94a3b8;
+    --vm-text-muted: #64748b;
+    --vm-text-label: #cbd5e1;
+
+    /* Border Colors */
+    --vm-border: rgba(139, 92, 246, 0.2);
+    --vm-border-hover: rgba(139, 92, 246, 0.4);
+    --vm-border-input: rgba(255, 255, 255, 0.1);
+
+    /* Shadows */
+    --vm-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --vm-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+    --vm-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+    --vm-shadow-glow: 0 0 20px rgba(139, 92, 246, 0.3);
+
+    /* Transitions */
+    --vm-transition-fast: 0.15s ease;
+    --vm-transition-base: 0.25s ease;
+    --vm-transition-slow: 0.4s ease;
+
+    /* Border Radius */
+    --vm-radius-sm: 6px;
+    --vm-radius-md: 10px;
+    --vm-radius-lg: 16px;
+    --vm-radius-xl: 24px;
+
+    /* Spacing */
+    --vm-space-xs: 4px;
+    --vm-space-sm: 8px;
+    --vm-space-md: 16px;
+    --vm-space-lg: 24px;
+    --vm-space-xl: 32px;
+    --vm-space-2xl: 48px;
+}
+
+/* ==========================================================================
+   Page Wrapper & Container
+   ========================================================================== */
+/* Prevent horizontal overflow on WP admin containers on our settings/docs pages */
+#wpbody {
+    overflow-x: hidden;
+}
+
+.frankrc-admin {
+    background: var(--vm-bg-gradient);
+    min-height: 100vh;
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-top: -20px;
+    padding: var(--vm-space-xl);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+.frankrc-admin * {
+    box-sizing: border-box;
+}
+
+.vm-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   Header & Branding
+   ========================================================================== */
+.vm-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--vm-space-xl);
+    padding-bottom: var(--vm-space-lg);
+    border-bottom: 1px solid var(--vm-border);
+}
+
+.vm-header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--vm-space-md);
+}
+
+.vm-logo {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--vm-primary), var(--vm-accent));
+    border-radius: var(--vm-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--vm-shadow-glow);
+}
+
+.vm-logo .dashicons {
+    font-size: 24px;
+    color: white;
+    width: 24px;
+    height: 24px;
+}
+
+.vm-title-group h1 {
+    color: var(--vm-text-primary);
+    font-size: 26px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.vm-version {
+    display: inline-block;
+    background: rgba(139, 92, 246, 0.2);
+    color: var(--vm-primary-hover);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 20px;
+    margin-left: var(--vm-space-sm);
+    vertical-align: middle;
+}
+
+.vm-header-subtitle {
+    color: var(--vm-text-secondary);
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.vm-header-actions {
+    display: flex;
+    gap: var(--vm-space-sm);
+}
+
+.vm-header-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--vm-border);
+    border-radius: var(--vm-radius-md);
+    color: var(--vm-text-secondary);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all var(--vm-transition-base);
+    text-decoration: none;
+}
+
+.vm-header-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--vm-border-hover);
+    color: var(--vm-text-primary);
+}
+
+.vm-header-btn .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+}
+
+/* ==========================================================================
+   Tab Navigation
+   ========================================================================== */
+.vm-tabs {
+    display: flex;
+    gap: var(--vm-space-xs);
+    margin-bottom: var(--vm-space-lg);
+    background: rgba(0, 0, 0, 0.2);
+    padding: var(--vm-space-xs);
+    border-radius: var(--vm-radius-lg);
+    width: fit-content;
+}
+
+.vm-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: transparent;
+    border: none;
+    border-radius: var(--vm-radius-md);
+    color: var(--vm-text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--vm-transition-base);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.vm-tab::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--vm-primary), var(--vm-accent));
+    opacity: 0;
+    transition: opacity var(--vm-transition-base);
+}
+
+.vm-tab:hover {
+    color: var(--vm-text-primary);
+}
+
+.vm-tab.active {
+    background: linear-gradient(135deg, var(--vm-primary), var(--vm-accent));
+    color: white;
+    box-shadow: var(--vm-shadow-sm);
+}
+
+.vm-tab .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.vm-tab span {
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================================================================
+   Cards
+   ========================================================================== */
+.vm-card {
+    background: var(--vm-bg-card);
+    border: 1px solid var(--vm-border);
+    border-radius: var(--vm-radius-lg);
+    padding: var(--vm-space-lg);
+    margin-bottom: var(--vm-space-lg);
+    box-shadow: var(--vm-shadow-sm);
+    transition: all var(--vm-transition-base);
+}
+
+.vm-card:hover {
+    border-color: var(--vm-border-hover);
+    box-shadow: var(--vm-shadow-md);
+}
+
+.vm-card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--vm-space-md);
+    margin-bottom: var(--vm-space-lg);
+    padding-bottom: var(--vm-space-md);
+    border-bottom: 1px solid var(--vm-border);
+}
+
+.vm-card-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(139, 92, 246, 0.15);
+    border-radius: var(--vm-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vm-card-icon .dashicons {
+    color: var(--vm-primary);
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+.vm-card-title {
+    color: var(--vm-text-primary);
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.vm-card-description {
+    color: var(--vm-text-secondary);
+    font-size: 13px;
+    margin-top: 2px;
+}
+
+/* ==========================================================================
+   Form Controls
+   ========================================================================== */
+.vm-form-row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--vm-space-lg);
+    padding: var(--vm-space-md) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.vm-form-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.vm-form-label {
+    flex: 0 0 200px;
+    color: var(--vm-text-label);
+    font-size: 14px;
+    font-weight: 500;
+    padding-top: 10px;
+}
+
+.vm-form-label .vm-label-hint {
+    display: block;
+    color: var(--vm-text-muted);
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 4px;
+}
+
+.vm-form-field {
+    flex: 1;
+}
+
+/* Text Input */
+.vm-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 16px;
+    background: var(--vm-bg-input);
+    border: 1px solid var(--vm-border-input);
+    border-radius: var(--vm-radius-md);
+    color: var(--vm-text-primary);
+    font-size: 14px;
+    transition: all var(--vm-transition-base);
+}
+
+.vm-input:focus {
+    outline: none;
+    border-color: var(--vm-primary);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
+
+.vm-input::placeholder {
+    color: var(--vm-text-muted);
+}
+
+/* Number Input */
+.vm-input-number {
+    width: 120px;
+}
+
+/* Textarea */
+.vm-textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 12px 16px;
+    background: var(--vm-bg-input);
+    border: 1px solid var(--vm-border-input);
+    border-radius: var(--vm-radius-md);
+    color: var(--vm-text-primary);
+    font-size: 13px;
+    font-family: 'Monaco', 'Consolas', monospace;
+    resize: vertical;
+    transition: all var(--vm-transition-base);
+}
+
+.vm-textarea:focus {
+    outline: none;
+    border-color: var(--vm-primary);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
+
+/* Select Dropdown */
+.vm-select {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 40px 12px 16px;
+    background: var(--vm-bg-input);
+    border: 1px solid var(--vm-border-input);
+    border-radius: var(--vm-radius-md);
+    color: var(--vm-text-primary);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all var(--vm-transition-base);
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394a3b8' d='M6 8.5L1.5 4h9L6 8.5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+}
+
+.vm-select:hover {
+    border-color: var(--vm-border-hover);
+}
+
+.vm-select:focus {
+    outline: none;
+    border-color: var(--vm-primary);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
+
+.vm-select option {
+    background: var(--vm-bg-dark);
+    color: var(--vm-text-primary);
+    padding: 10px;
+}
+
+.vm-select optgroup {
+    background: var(--vm-bg-card);
+    color: var(--vm-text-secondary);
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* ==========================================================================
+   Toggle Switch
+   ========================================================================== */
+.vm-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.vm-toggle input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.vm-toggle-slider {
+    position: relative;
+    width: 48px;
+    height: 26px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 26px;
+    transition: all var(--vm-transition-base);
+}
+
+.vm-toggle-slider::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    transition: all var(--vm-transition-base);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.vm-toggle input:checked+.vm-toggle-slider {
+    background: linear-gradient(135deg, var(--vm-primary), var(--vm-accent));
+}
+
+.vm-toggle input:checked+.vm-toggle-slider::before {
+    transform: translateX(22px);
+}
+
+.vm-toggle input:focus+.vm-toggle-slider {
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.3);
+}
+
+.vm-toggle-label {
+    margin-left: 12px;
+    color: var(--vm-text-secondary);
+    font-size: 14px;
+}
+
+/* ==========================================================================
+   Feature Grid
+   ========================================================================== */
+.vm-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--vm-space-md);
+}
+
+.vm-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--vm-space-md);
+    padding: var(--vm-space-md);
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid transparent;
+    border-radius: var(--vm-radius-md);
+    transition: all var(--vm-transition-base);
+}
+
+.vm-feature-item:hover {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: var(--vm-border);
+}
+
+.vm-feature-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(139, 92, 246, 0.15);
+    border-radius: var(--vm-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.vm-feature-icon .dashicons {
+    color: var(--vm-primary);
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+}
+
+.vm-feature-content {
+    flex: 1;
+}
+
+.vm-feature-name {
+    color: var(--vm-text-primary);
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.vm-feature-desc {
+    color: var(--vm-text-muted);
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.vm-feature-toggle {
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Save Button (in header)
+   ========================================================================== */
+.vm-btn-save {
+    padding: 10px 20px;
+}
+
+.vm-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--vm-radius-md);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--vm-transition-base);
+}
+
+.vm-btn-primary {
+    background: linear-gradient(135deg, var(--vm-primary), var(--vm-accent));
+    color: white;
+    box-shadow: var(--vm-shadow-sm), 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+.vm-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--vm-shadow-md), 0 0 30px rgba(139, 92, 246, 0.4);
+}
+
+.vm-btn-primary:active {
+    transform: translateY(0);
+}
+
+.vm-btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--vm-border);
+    color: var(--vm-text-secondary);
+}
+
+.vm-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--vm-text-primary);
+}
+
+.vm-btn .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+}
+
+/* Spin animation for loading */
+@keyframes vm-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.vm-btn .dashicons.spin {
+    animation: vm-spin 1s linear infinite;
+}
+
+/* Button states for AJAX */
+.vm-btn-save:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.vm-btn-success {
+    background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+    box-shadow: var(--vm-shadow-sm), 0 0 20px rgba(34, 197, 94, 0.3) !important;
+}
+
+.vm-btn-error {
+    background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+    box-shadow: var(--vm-shadow-sm), 0 0 20px rgba(239, 68, 68, 0.3) !important;
+}
+
+/* Toast Notifications */
+.vm-notification {
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: var(--vm-radius-md);
+    font-weight: 500;
+    font-size: 14px;
+    z-index: 9999;
+    transform: translateX(120%);
+    transition: transform 0.3s ease;
+    box-shadow: var(--vm-shadow-lg);
+}
+
+.vm-notification.show {
+    transform: translateX(0);
+}
+
+.vm-notification-success {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+}
+
+.vm-notification-error {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+}
+
+/* ==========================================================================
+   Notifications / Toast
+   ========================================================================== */
+.vm-notice {
+    display: flex;
+    align-items: center;
+    gap: var(--vm-space-md);
+    padding: var(--vm-space-md) var(--vm-space-lg);
+    background: var(--vm-bg-card);
+    border: 1px solid var(--vm-border);
+    border-radius: var(--vm-radius-md);
+    margin-bottom: var(--vm-space-lg);
+}
+
+.vm-notice-success {
+    border-left: 4px solid #22c55e;
+}
+
+.vm-notice-success .vm-notice-icon {
+    color: #22c55e;
+}
+
+.vm-notice-error {
+    border-left: 4px solid #ef4444;
+}
+
+.vm-notice-error .vm-notice-icon {
+    color: #ef4444;
+}
+
+.vm-notice-icon .dashicons {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+.vm-notice-content {
+    flex: 1;
+}
+
+.vm-notice-title {
+    color: var(--vm-text-primary);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.vm-notice-message {
+    color: var(--vm-text-secondary);
+    font-size: 13px;
+}
+
+/* ==========================================================================
+   Tab Content Animations
+   ========================================================================== */
+.vm-tab-content {
+    animation: vmFadeIn 0.3s ease;
+}
+
+@keyframes vmFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hide inactive tabs */
+.vm-tab-content[style*="display: none"] {
+    animation: none;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.vm-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--vm-space-xl);
+    margin-top: var(--vm-space-xl);
+    border-top: 1px solid var(--vm-border);
+}
+
+.vm-footer-links {
+    display: flex;
+    gap: var(--vm-space-lg);
+}
+
+.vm-footer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--vm-text-secondary);
+    font-size: 13px;
+    text-decoration: none;
+    transition: color var(--vm-transition-base);
+}
+
+.vm-footer-link:hover {
+    color: var(--vm-primary-hover);
+}
+
+.vm-footer-link .dashicons {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+}
+
+.vm-footer-copyright {
+    color: var(--vm-text-muted);
+    font-size: 12px;
+}
+
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .vm-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--vm-space-md);
+    }
+
+    .vm-form-row {
+        flex-direction: column;
+        gap: var(--vm-space-sm);
+    }
+
+    .vm-form-label {
+        flex: none;
+        padding-top: 0;
+    }
+
+    .vm-feature-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .frankrc-admin {
+        padding: var(--vm-space-md);
+    }
+
+    .vm-tabs {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .vm-tab {
+        flex: 1;
+        justify-content: center;
+        min-width: 120px;
+    }
+
+    .vm-save-bar {
+        flex-direction: column;
+        gap: var(--vm-space-sm);
+    }
+
+    .vm-btn {
+        width: 100%;
+    }
+}
+
+/* ==========================================================================
+   Override WordPress Defaults
+   ========================================================================== */
+.frankrc-admin .notice {
+    display: none !important;
+}
+
+.frankrc-admin h1,
+.frankrc-admin h2,
+.frankrc-admin h3 {
+    color: var(--vm-text-primary);
+}
+
+.frankrc-admin a {
+    color: var(--vm-primary);
+}
+
+.frankrc-admin a:hover {
+    color: var(--vm-primary-hover);
+}
+
+/* ==========================================================================
+   Documentation Styles
+   ========================================================================== */
+.vm-docs-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.vm-docs-section {
+    padding: 20px;
+}
+
+.vm-docs-section h4 {
+    color: #e2e8f0;
+    margin: 0 0 10px 0;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.vm-docs-section h4 .dashicons {
+    color: var(--vm-primary, #6366f1);
+}
+
+.vm-docs-section h4:not(:first-child) {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.vm-docs-section p {
+    color: #94a3b8;
+    margin: 0 0 10px 0;
+    line-height: 1.6;
+}
+
+.vm-docs-section ul {
+    margin: 10px 0 0 20px;
+    color: #94a3b8;
+}
+
+.vm-docs-section ul li {
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+
+.vm-shortcuts-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.vm-shortcuts-table th,
+.vm-shortcuts-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.vm-shortcuts-table th {
+    color: #e2e8f0;
+    font-weight: 600;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.vm-shortcuts-table td {
+    color: #94a3b8;
+}
+
+.vm-shortcuts-table kbd {
+    background: linear-gradient(135deg, #374151, #1f2937);
+    border: 1px solid #4b5563;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-family: monospace;
+    font-size: 12px;
+    color: #e2e8f0;
+    box-shadow: 0 2px 0 #1f2937;
+}
+
+.vm-faq-item {
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.vm-faq-item:last-child {
+    border-bottom: none;
+}
+
+.vm-faq-item h4 {
+    color: #e2e8f0 !important;
+    margin: 0 0 8px 0 !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+.vm-faq-item p {
+    margin: 0;
+}
